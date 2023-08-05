@@ -1,0 +1,41 @@
+.coffeeHead{
+    text-align: center;
+    font-weight: bolder;
+    font-size: xxx-large;
+    color: darkgreen;
+}
+body {
+    background-color: gold;
+}
+
+.roast-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.coffee-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-a-coffee {
+    display: flex;
+    justify-content: flex-end;
+    color: black;
+}
+
+p {
+    text-decoration: black;
+    font-weight: bold;
+    font-size: 25px;
+}
+table {
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+@media screen and (max-width:769px){
+    #image {
+        display: none;
+    }
+}
