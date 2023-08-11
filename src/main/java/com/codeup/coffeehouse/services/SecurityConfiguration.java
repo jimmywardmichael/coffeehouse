@@ -1,6 +1,6 @@
 package com.codeup.coffeehouse.services;
 
-//import com.codeup.coffeehouse.services.UserDetailsLoader;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,13 +13,9 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfiguration {
 
-//    private final UserDetailsLoader usersLoader;
 
-//    public SecurityConfiguration(UserDetailsLoader usersLoader) {
-//        this.usersLoader = usersLoader;
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -37,25 +33,23 @@ public class SecurityConfig {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/profile") // user's home page, it can be any URL
+                .defaultSuccessUrl("/coffeehome") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
                 .logout()
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/") // append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-
-                .requestMatchers("/","/home") // anyone can see the home and the ads pages
-
+                .requestMatchers("/", "/signup") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
+                        "/coffeehome",
                         "/"
-
                 )
                 .authenticated()
         ;
