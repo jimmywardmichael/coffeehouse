@@ -8,19 +8,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller
-@RequestMapping("/signup")
+@RequestMapping(path="/signup")
 public class UserController {
     @Autowired
     private UserService userService;
 
     @GetMapping("/signup")
+    @ResponseBody
     public String showSignUpForm(Model model) {
         model.addAttribute("user", new User()); // Use your User class here
         return "signup"; // Return the name of your signup HTML file
     }
 
     @PostMapping("/signup")
+    @ResponseBody
     public String processSignUp(User user) {
         userService.signUp(user);
         return "redirect:/login"; // Redirect to the login page after successful sign-up
